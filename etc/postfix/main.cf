@@ -18,7 +18,6 @@ smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
 smtpd_banner = $myhostname - ESMTP - Minimal SMTP
 smtpd_helo_required = yes
 smtpd_peername_lookup = no
-smtpd_timeout = 10
 smtpd_tls_CAfile = /etc/postfix/ssl/fullchain.pem
 smtpd_tls_CApath = /etc/ssl/certs
 smtpd_tls_cert_file = /etc/postfix/ssl/cert.pem

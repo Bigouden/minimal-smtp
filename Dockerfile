@@ -32,5 +32,5 @@ RUN postfix set-permissions || true \
 WORKDIR /etc/postfix/
 EXPOSE 25/tcp
 VOLUME /var/spool/postfix
-HEALTHCHECK --interval=1m CMD /usr/sbin/postfix status || exit 1
+HEALTHCHECK CMD /usr/sbin/postfix status || exit 1
 ENTRYPOINT ["/usr/sbin/postfix", "start-fg"]
