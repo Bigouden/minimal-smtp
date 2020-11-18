@@ -1,5 +1,5 @@
 FROM alpine:3.12
-LABEL maintainer="Thomas GUIRRIEC <thomas.guirriec@interieur.gouv.fr>"
+LABEL maintainer="Thomas GUIRRIEC <thomas@guirriec.fr>"
 RUN apk add --update --no-cache \
       ca-certificates \
       openssl \
