@@ -33,4 +33,4 @@ WORKDIR /etc/postfix/
 EXPOSE 25/tcp
 VOLUME /var/spool/postfix
 HEALTHCHECK CMD /usr/sbin/postfix status || exit 1
-ENTRYPOINT ["/usr/sbin/postfix", "start-fg"]
+ENTRYPOINT ["/entrypoint.sh"]
