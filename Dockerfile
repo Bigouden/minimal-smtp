@@ -11,6 +11,7 @@ RUN apk add --update --no-cache \
          /root/.cache/*
 COPY etc /etc
 COPY entrypoint.sh /
+COPY postfix-config-check /usr/local/bin/
 RUN postfix set-permissions || true \
     && newaliases \
     && mkdir /etc/postfix/ssl \
@@ -28,7 +29,8 @@ RUN postfix set-permissions || true \
     && cp /etc/postfix/ssl/cert.pem /etc/postfix/ssl/fullchain.pem \
     && cp /etc/postfix/ssl/fullchain.pem /etc/ssl/certs/ \
     && update-ca-certificates \
-    && chmod +x /entrypoint.sh
+    && chmod +x /entrypoint.sh \
+    && chmod +x /usr/local/bin/postfix-config-check
 WORKDIR /etc/postfix/
 EXPOSE 25/tcp
 VOLUME /var/spool/postfix

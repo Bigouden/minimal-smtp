@@ -1,0 +1,17 @@
+#!/bin/sh
+stderr=$(/usr/sbin/postfix check 2>&1 > /dev/null)
+if [[ "$?" -ne 0 ]]
+then
+    echo "Postfix Configuration Problem"
+    postfix check
+else
+    if [[ -z "$stderr" ]]
+    then
+        echo "Postfix Configuration OK"
+        exit 0
+    else
+        echo "Postfix Configuration Problem"
+        echo "$stderr" | uniq
+        exit 1
+    fi
+fi

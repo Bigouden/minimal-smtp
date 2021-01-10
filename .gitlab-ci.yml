@@ -2,8 +2,23 @@ include:
   - project: 'Bigouden/gitlab-ci-templates'
     file: '.gitlab-ci-docker.yml'
 
+.standalone:
+  image:
+    name: $CONTAINER_TEST_IMAGE
+    entrypoint: [""]
+  dependencies: []
+  variables:
+    GIT_STRATEGY: none
+
 stages:
   - Quality
   - Build
+  - Configuration Checks
   - Inspect
   - Release
+
+Configuration:
+  stage: Configuration Checks
+  extends: .standalone
+  script:
+    - "postfix-config-check"
